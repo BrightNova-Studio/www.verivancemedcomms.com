@@ -22,7 +22,7 @@ export default function Hero() {
       className="relative w-full overflow-visible"
       style={{
         minHeight: "100vh",
-        paddingTop: "100px",
+        paddingTop: "clamp(120px, 14vh, 140px)",  /* top-bar + navbar */
         paddingBottom: "60px",
       }}
     >
@@ -82,13 +82,10 @@ export default function Hero() {
         >
           <div className="text-white flex flex-col justify-center">
             {/* Badge */}
-            <div 
-              className={`relative inline-flex items-center gap-3 mb-6 px-6 py-3 rounded-full border-2 border-[#2ec4cc]/60 backdrop-blur-md w-fit overflow-hidden shadow-lg shadow-[#2ec4cc]/20 ${
+            <div
+              className={`relative inline-flex items-center gap-3 mb-6 px-6 py-3 rounded-full border-2 border-[#2ec4cc]/60 backdrop-blur-md w-fit overflow-hidden badge-ring-pulse ${
                 isLoaded ? "animate-stagger-1" : "opacity-0"
               }`}
-              style={{
-                boxShadow: "0 8px 32px rgba(46, 196, 204, 0.3), 0 0 20px rgba(46, 196, 204, 0.2)",
-              }}
             >
               {/* Animated gradient background */}
               <div className="absolute inset-0 badge-gradient-animate rounded-full"></div>

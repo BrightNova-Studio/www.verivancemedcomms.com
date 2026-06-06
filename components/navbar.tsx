@@ -6,6 +6,8 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { ChevronDown, Menu, X, Sparkles } from "lucide-react"
 import { useApplyNow } from "@/components/apply-now-context"
+import TopBar from "@/components/top-bar"
+import { BookOpen } from "lucide-react"
 
 const courses = [
   { name: "Clinical Research", path: "/courses/clinical-research" },
@@ -38,11 +40,14 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
         isScrolled
-          ? "bg-white border-b border-[#e2e8f0]/50 shadow-lg shadow-[#0b3c5d]/5"
-          : "bg-white border-b border-[#e2e8f0]/30 shadow-sm"
+          ? "bg-white shadow-lg shadow-[#0b3c5d]/5"
+          : "bg-white shadow-sm"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Top info bar — always visible */}
+      <TopBar />
+
+      <div className="border-t border-[#e2e8f0]/40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Desktop row */}
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
@@ -233,6 +238,7 @@ export default function Navbar() {
               Blog
             </Link>
 
+            {/* Apply Now */}
             <button
               onClick={() => { openModal(); setMobileOpen(false) }}
               className="w-full mt-4 px-6 py-3 bg-gradient-to-r from-[#0b3c5d] to-[#2ec4cc] text-white rounded-xl hover:shadow-2xl hover:shadow-[#2ec4cc]/40 transition-all duration-300 font-semibold flex items-center justify-center gap-2 transform hover:scale-105"
@@ -240,6 +246,18 @@ export default function Navbar() {
               <Sparkles size={16} />
               Apply Now
             </button>
+
+            {/* Our Brochure */}
+            <a
+              href="/brochures/verivance-training-academy-brochure.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileOpen(false)}
+              className="w-full px-6 py-3 border-2 border-[#2ec4cc]/60 text-[#2ec4cc] rounded-xl hover:bg-[#2ec4cc]/10 transition-all duration-300 font-semibold flex items-center justify-center gap-2"
+            >
+              <BookOpen size={16} />
+              Our Brochure
+            </a>
           </div>
         )}
       </div>

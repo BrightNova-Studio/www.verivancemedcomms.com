@@ -89,16 +89,16 @@ export default function Navbar() {
 
       <div className="border-t border-[#e2e8f0]/40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Desktop row */}
-        <div className="flex items-center justify-between h-16 sm:h-20">
+        <div className="flex items-center justify-between h-[68px] sm:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center group">
             <Image
               src="/logo.png"
               alt="Verivance Logo"
-              width={180}
-              height={50}
-              className="object-contain h-10 sm:h-12 w-auto transition-all duration-300 group-hover:opacity-90"
-              style={{ imageRendering: "crisp-edges" }}
+              width={600}
+              height={169}
+              quality={100}
+              className="object-contain h-12 sm:h-14 w-auto transition-all duration-300 group-hover:opacity-90"
               priority
             />
           </Link>

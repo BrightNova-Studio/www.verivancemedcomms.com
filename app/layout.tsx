@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import WhatsAppButton from "@/components/whatsapp-button"
+import LeadPopup from "@/components/lead-popup"
 import { ApplyNowProvider } from "@/components/apply-now-context"
 import ApplyNowForm from "@/components/apply-now-form"
 import { FreeDemoProvider } from "@/components/free-demo-context"
@@ -62,6 +63,7 @@ export default function RootLayout({
                 <SuccessToast />
                 <ErrorToast />
                 <WhatsAppButton />
+                <LeadPopup />
                 <Analytics />
               </AdvisorModalProvider>
             </FounderModalProvider>

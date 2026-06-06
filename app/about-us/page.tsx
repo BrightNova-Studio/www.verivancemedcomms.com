@@ -9,67 +9,6 @@ import {
   FlaskConical, Brain, BarChart3
 } from "lucide-react"
 import { useApplyNow } from "@/components/apply-now-context"
-import { useAdvisorModal } from "@/components/advisor-modal-context"
-import type { AdvisorData } from "@/components/advisor-modal-context"
-import Image from "next/image"
-
-const advisors: AdvisorData[] = [
-  {
-    name: "Dr. Y. V. Jagadeesh Babu, MBBS",
-    title: "Medical Officer & Clinical Advisor",
-    specialization: "Public Health and Clinical Practice",
-    affiliation: "Advisory Committee Member at Verivance MedComms",
-    initials: "JB",
-    image: "/about/jagadeesh-babu.jpg",
-    content: [
-      "Dr. Y. V. Jagadeesh Babu is a qualified medical professional with expertise in public health, primary healthcare delivery, and clinical practice.",
-      "With a strong background in medicine and community health, he brings practical clinical insights that enhance the quality and relevance of Verivance's training programs.",
-      "As Medical Officer & Clinical Advisor at Verivance MedComms, Dr. Jagadeesh Babu ensures our curriculum reflects real-world clinical standards and prepares students for healthcare industry expectations.",
-    ],
-  },
-  {
-    name: "Dr. Vara Prasad Saka, Ph.D. (Pharmacology)",
-    title: "Academic & Research Advisor",
-    specialization: "Pharmacology & Scientific Writing",
-    affiliation: "11+ years in preclinical research and academic instruction",
-    initials: "VP",
-    image: "/about/vara-prasad-saka.jpeg",
-    linkedinUrl: "#",
-    content: [
-      "Dr. Vara Prasad Saka holds a Ph.D. in Pharmacology and brings over 11 years of rich experience in preclinical research, drug safety studies, and academic instruction.",
-      "His expertise spans pharmacological evaluation, scientific writing, and regulatory compliance — making him an invaluable resource for programs in clinical research, pharmacovigilance, and medical writing.",
-      "At Verivance, Dr. Vara Prasad guides curriculum design and ensures programs align with academic excellence and industry relevance.",
-    ],
-  },
-  {
-    name: "Mr. N. Narasimha Rao, M. Pharm",
-    title: "Senior Industry Advisor",
-    specialization: "Formulation & Technology Transfer",
-    affiliation: "25+ years of industry experience",
-    initials: "NR",
-    image: "/about/narasimha-rao.jpeg",
-    linkedinUrl: "#",
-    content: [
-      "Mr. N. Narasimha Rao is a highly experienced pharmaceutical professional with over 25 years in drug formulation, technology transfer, and pharmaceutical manufacturing.",
-      "His career spans multiple roles in leading pharma companies where he has led formulation development, process scale-up, and technology transfer activities across Indian and global operations.",
-      "At Verivance, he brings unparalleled industry depth to help students understand the practical realities of pharmaceutical operations and regulatory compliance.",
-    ],
-  },
-  {
-    name: "B. Sai Mrudula, M.Pharm",
-    title: "Scientist II – Pharmacokinetics",
-    specialization: "BA/BE Studies & Regulatory Affairs",
-    affiliation: "Expert in pharmacokinetics and regulatory processes",
-    initials: "SM",
-    image: "/about/b-sai-mrudula.png",
-    linkedinUrl: "#",
-    content: [
-      "B. Sai Mrudula is a Scientist II specializing in pharmacokinetics with deep expertise in BA/BE studies, regulatory submissions, and drug safety evaluation.",
-      "With hands-on experience in bioanalytical method development, pharmacokinetic data analysis, and regulatory dossier preparation, she brings strong scientific and regulatory expertise to the advisory team.",
-      "At Verivance, Sai Mrudula advises on pharmacovigilance and regulatory affairs content, ensuring students gain current and precise industry knowledge.",
-    ],
-  },
-]
 
 const facultyDomains = [
   { icon: FlaskConical, label: "Clinical Research", desc: "ICH-GCP, trial operations, site management" },
@@ -108,7 +47,6 @@ const differentiators = [
 
 export default function AboutUsPage() {
   const { openModal }          = useApplyNow()
-  const { openModal: openAdvisorModal } = useAdvisorModal()
 
   return (
     <main className="w-full overflow-hidden">
@@ -329,57 +267,6 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* ── BOARD OF ADVISORS ────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-16">
-            <p className="text-[#2ec4cc] font-bold tracking-widest text-sm uppercase mb-2">Strategic Guidance</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0b3c5d] mb-4">
-              Board of Advisors
-            </h2>
-            <p className="text-[#64748b] max-w-2xl mx-auto text-sm md:text-base">
-              Industry leaders and academic experts guiding our strategic direction and ensuring excellence in education.
-            </p>
-            <div className="w-16 h-1 bg-gradient-to-r from-[#0b3c5d] to-[#2ec4cc] rounded-full mx-auto mt-5" />
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {advisors.map((advisor, i) => (
-              <div key={i}
-                className="bg-gradient-to-br from-white to-[#f8fafc] rounded-2xl p-6 shadow-md border border-[#e2e8f0] hover:shadow-xl hover:-translate-y-2 transition-all duration-300 text-center group">
-                {/* Photo */}
-                <div className="relative mb-5 flex justify-center">
-                  <div className="w-24 h-24 rounded-full overflow-hidden bg-gradient-to-br from-[#0b3c5d] to-[#2ec4cc] shadow-md ring-4 ring-white group-hover:ring-[#2ec4cc]/30 transition-all">
-                    {advisor.image ? (
-                      <Image src={advisor.image} alt={advisor.name} width={96} height={96}
-                        className="w-full h-full object-cover" style={{ objectPosition:"center 20%" }} />
-                    ) : (
-                      <span className="text-white font-bold text-2xl flex items-center justify-center w-full h-full">
-                        {advisor.initials.slice(0,2)}
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <h3 className="text-base font-bold text-[#0b3c5d] mb-1 leading-snug">{advisor.name}</h3>
-                <p className="text-[#2ec4cc] text-xs font-semibold mb-1">{advisor.title}</p>
-                {advisor.specialization && (
-                  <p className="text-[#64748b] text-xs mb-1">{advisor.specialization}</p>
-                )}
-                {advisor.affiliation && (
-                  <p className="text-[#94a3b8] text-xs mb-4">{advisor.affiliation}</p>
-                )}
-                <button
-                  onClick={() => openAdvisorModal(advisor)}
-                  className="inline-flex items-center gap-1.5 text-[#0b3c5d] text-xs font-semibold hover:text-[#2ec4cc] transition-colors group/btn"
-                >
-                  <span>Learn More</span>
-                  <ArrowRight size={13} className="group-hover/btn:translate-x-0.5 transition-transform" />
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── FINAL CTA ────────────────────────────────────────────── */}
       <section className="py-20 md:py-28 relative overflow-hidden"

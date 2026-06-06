@@ -21,7 +21,7 @@ const features = [
   {
     icon: Award,
     title: "Recognized Certification",
-    description: "Earn industry-recognized certifications that add credibility to your profile and enhance employability in Clinical Research, Pharmacovigilance, Medical Writing, Clinical Data Management, Clinical SAS, and GPAT Coaching roles.",
+    description: "Earn industry-recognized certifications that add credibility to your profile and enhance employability in Clinical Research, Pharmacovigilance, Medical Writing, Clinical Data Management, and Clinical SAS roles.",
   },
   {
     icon: Zap,

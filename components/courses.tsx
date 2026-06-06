@@ -8,6 +8,28 @@ import { useFreeDemo } from "./free-demo-context"
 
 const courseData = [
   {
+    id: 0,
+    title: "5-Domain Job-Ready Program",
+    image: "/clinical-research-laboratory-students-pharma-train.jpg",
+    points: ["Clinical Research + Pharmacovigilance + Medical Writing", "Regulatory Affairs + Clinical Data Management", "3-Month Flagship Program · Industry Certificate"],
+    path: "/courses/5-domain-program",
+    flagship: true,
+  },
+  {
+    id: 8,
+    title: "AI in Pharma Innovation Program",
+    image: "/advanced-data-management.jpg",
+    points: ["AI Applications in Drug Discovery & Clinical Trials", "Pharmacovigilance, Regulatory & Medical Writing AI", "1-Month Program · Online + Self-Paced · Certificate"],
+    path: "/courses/ai-in-pharma",
+  },
+  {
+    id: 7,
+    title: "Stem Cell & Regenerative Therapy Program",
+    image: "/clinical-research-laboratory.jpg",
+    points: ["Stem Cell Foundations & Advanced Techniques", "Hands-on Lab Training + Industry Internship", "3-Month Program · Certificate + Placement Support"],
+    path: "/courses/stem-cell-therapy",
+  },
+  {
     id: 1,
     title: "Advanced Clinical Research Certification",
     image: "/clinical-research-laboratory.jpg",
@@ -35,13 +57,7 @@ const courseData = [
     points: ["CRF Design & EDC Systems", "Data Validation & Quality Control", "Data Integrity & Compliance Standards"],
     path: "/courses/clinical-data-management",
   },
-  {
-    id: 5,
-    title: "GPAT Advanced Coaching Program",
-    image: "/pharmacy-examination-preparation.jpg",
-    points: ["Complete GPAT Curriculum Coverage", "Mock Tests & Performance Analytics", "Expert Mentorship & Exam Strategy"],
-    path: "/courses/gpat-coaching",
-  },
+
   {
     id: 6,
     title: "Clinical SAS Certification",
@@ -68,7 +84,7 @@ export default function Courses() {
       "Regulatory & Medical Writing Certification": "Medical Writing",
       "Clinical Data Management Certification": "Clinical Data Management",
       "Clinical SAS Certification": "Clinical SAS",
-      "GPAT Advanced Coaching Program": "GPAT Coaching",
+
     }
     return courseMap[title] || title
   }
@@ -171,18 +187,16 @@ export default function Courses() {
           {courseData.map((course, index) => (
             <div
               key={course.id}
-              ref={(el) => {
-                cardRefs.current[index] = el
-              }}
+              ref={(el) => { cardRefs.current[index] = el }}
               data-index={index}
-              className={`group rounded-2xl overflow-hidden glass-effect glass-effect-hover shadow-premium hover:shadow-premium-lg transition-all duration-700 ease-out transform border border-white/50 hover:border-[#2ec4cc]/50 ${
-                visibleCards.has(index)
-                  ? "opacity-100 translate-y-0 scale-100"
-                  : "opacity-0 translate-y-12 scale-95"
-              } hover:scale-105 hover:-translate-y-4`}
-              style={{
-                transitionDelay: visibleCards.has(index) ? `${index * 80}ms` : "0ms",
-              }}
+              className={`group rounded-2xl overflow-hidden transition-all duration-700 ease-out transform hover:scale-105 hover:-translate-y-4 ${
+                (course as any).flagship
+                  ? "md:col-span-2 lg:col-span-3 border-2 border-yellow-400/40 shadow-xl shadow-yellow-400/10"
+                  : "border border-white/50 hover:border-[#2ec4cc]/50 shadow-md hover:shadow-xl"
+              } ${
+                visibleCards.has(index) ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-95"
+              }`}
+              style={{ transitionDelay: visibleCards.has(index) ? `${index * 80}ms` : "0ms", background: "#fff" }}
               onMouseEnter={() => setHoveredId(course.id)}
               onMouseLeave={() => setHoveredId(null)}
             >

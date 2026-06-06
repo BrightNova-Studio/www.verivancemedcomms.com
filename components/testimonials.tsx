@@ -36,14 +36,6 @@ const successStories = [
       "Regulatory concepts finally made sense to me. Regulatory Affairs always seemed overwhelming, but this training broke everything down in a simple and structured manner. I learned about regulatory documentation, submission processes, and compliance requirements in an easy-to-follow way. The course gave me clarity and confidence to pursue opportunities in regulatory affairs.",
     rating: 4.9,
   },
-  {
-    id: 5,
-    name: "Pooja N.",
-    image: "👩‍💼",
-    testimonial:
-      "My preparation became focused and disciplined. I joined the GPAT program looking for proper guidance and a structured approach. The training helped me strengthen my fundamentals, focus on high-yield topics, and approach problem-solving more confidently. Having clear guidance and consistent support made my preparation more organized and goal-oriented.",
-    rating: 4.8,
-  },
 ]
 
 export default function Testimonials() {

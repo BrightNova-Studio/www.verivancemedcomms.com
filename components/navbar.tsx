@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
@@ -10,12 +10,14 @@ import TopBar from "@/components/top-bar"
 import { BookOpen } from "lucide-react"
 
 const courses = [
+  { name: "⭐ 5-Domain Job-Ready Program", path: "/courses/5-domain-program" },
+  { name: "Stem Cell & Regenerative Therapy", path: "/courses/stem-cell-therapy" },
+  { name: "AI in Pharma Innovation Program", path: "/courses/ai-in-pharma" },
   { name: "Clinical Research", path: "/courses/clinical-research" },
   { name: "Pharmacovigilance", path: "/courses/pharmacovigilance" },
   { name: "Medical Writing", path: "/courses/medical-writing" },
   { name: "Clinical Data Management", path: "/courses/clinical-data-management" },
   { name: "Clinical SAS", path: "/courses/clinical-sas" },
-  { name: "GPAT Coaching", path: "/courses/gpat-coaching" },
   { name: "Internship Programs", path: "/courses/internship-programs" },
 ]
 
@@ -24,16 +26,43 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [topBarVisible, setTopBarVisible] = useState(true)
   const { openModal } = useApplyNow()
+
+  const lastScrollY   = useRef(0)
+  const idleTimer     = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const basePath = pathname?.replace(/\/$/, "") || "/"
   const isCoursesActive = basePath.startsWith("/courses")
   const isActive = (path: string) => basePath === (path.replace(/\/$/, "") || "/")
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    const handleScroll = () => {
+      const currentY = window.scrollY
+      const scrollingDown = currentY > lastScrollY.current
+
+      // Scroll state for navbar shadow
+      setIsScrolled(currentY > 20)
+
+      // Hide top-bar when scrolling DOWN past 60px; show on scroll UP
+      if (currentY > 60) {
+        setTopBarVisible(!scrollingDown)
+      } else {
+        setTopBarVisible(true) // always visible at very top
+      }
+
+      lastScrollY.current = currentY
+
+      // Re-show after 2 s of no scrolling (idle)
+      if (idleTimer.current) clearTimeout(idleTimer.current)
+      idleTimer.current = setTimeout(() => setTopBarVisible(true), 2000)
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      if (idleTimer.current) clearTimeout(idleTimer.current)
+    }
   }, [])
 
   return (
@@ -44,8 +73,19 @@ export default function Navbar() {
           : "bg-white shadow-sm"
       }`}
     >
-      {/* Top info bar — always visible */}
-      <TopBar />
+      {/* Top info bar — smart show/hide */}
+      <div
+        className="overflow-hidden"
+        style={{
+          maxHeight: topBarVisible ? "48px" : "0px",
+          opacity: topBarVisible ? 1 : 0,
+          transition: topBarVisible
+            ? "max-height 0.4s ease, opacity 0.4s ease"        /* slide down */
+            : "max-height 0.35s ease, opacity 0.25s ease",      /* slide up faster */
+        }}
+      >
+        <TopBar />
+      </div>
 
       <div className="border-t border-[#e2e8f0]/40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Desktop row */}
@@ -248,16 +288,14 @@ export default function Navbar() {
             </button>
 
             {/* Our Brochure */}
-            <a
-              href="/brochures/verivance-training-academy-brochure.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/brochure"
               onClick={() => setMobileOpen(false)}
               className="w-full px-6 py-3 border-2 border-[#2ec4cc]/60 text-[#2ec4cc] rounded-xl hover:bg-[#2ec4cc]/10 transition-all duration-300 font-semibold flex items-center justify-center gap-2"
             >
               <BookOpen size={16} />
               Our Brochure
-            </a>
+            </Link>
           </div>
         )}
       </div>

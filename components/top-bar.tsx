@@ -50,9 +50,7 @@ export default function TopBar() {
           {/* Right — brochure button */}
           <div className="w-36 shrink-0 flex justify-end">
             <a
-              href="/brochures/verivance-training-academy-brochure.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/brochure"
               className="flex items-center gap-2 px-5 py-1.5 rounded-md border border-[#2ec4cc]/60 text-[#2ec4cc] hover:bg-[#2ec4cc] hover:text-[#0b1f35] transition-all duration-200 whitespace-nowrap font-semibold text-xs tracking-wide"
             >
               <BookOpen size={13} />

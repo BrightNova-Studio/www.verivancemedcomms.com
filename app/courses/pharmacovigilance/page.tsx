@@ -113,7 +113,7 @@ export default function PharmacovigilancePage() {
         className="relative w-full overflow-hidden"
         style={{
           minHeight: isDesktop ? (isVeryShortScreen ? "auto" : isShortScreen ? "90vh" : "75vh") : "auto",
-          paddingTop: isDesktop ? (isVeryShortScreen ? "80px" : "100px") : "80px",
+          paddingTop: isDesktop ? (isVeryShortScreen ? "132px" : "148px") : "132px",
           paddingBottom: isDesktop ? (isVeryShortScreen ? "40px" : "60px") : "60px",
         }}
       >

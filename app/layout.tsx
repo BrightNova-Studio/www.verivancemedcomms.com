@@ -22,7 +22,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Verivance - Clinical Research & Pharma Training Institute",
   description:
-    "India's leading institute for Clinical Research, Pharmacovigilance, Medical Writing, and GPAT coaching. Launch your successful career with expert-designed programs.",
+    "India's leading institute for Clinical Research, Pharmacovigilance, Medical Writing, Clinical Data Management, and Clinical SAS. Launch your successful career with expert-designed programs.",
   generator: "v0.app",
   icons: {
     icon: [

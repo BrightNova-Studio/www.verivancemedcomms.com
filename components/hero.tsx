@@ -125,7 +125,7 @@ export default function Hero() {
                 fontSize: `${Math.max(16, Math.min(windowWidth * 0.02, 22))}px`,
               }}
             >
-              Launch a successful career with <strong>industry-aligned, expert-designed programs</strong> in Clinical Research, Pharmacovigilance, Medical Writing, Clinical Data Management, Clinical SAS, and GPAT Coaching — built to prepare you for real opportunities in leading CROs and pharmaceutical companies.
+              Launch a successful career with <strong>industry-aligned, expert-designed programs</strong> in Clinical Research, Pharmacovigilance, Medical Writing, Clinical Data Management, and Clinical SAS — built to prepare you for real opportunities in leading CROs and pharmaceutical companies.
             </p>
 
             {/* CTA Buttons with responsive sizing */}

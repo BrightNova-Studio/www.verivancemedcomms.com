@@ -6,12 +6,15 @@ import { X, AlertCircle, CheckCircle2 } from "lucide-react"
 import { useApplyNow } from "@/components/apply-now-context"
 
 const COURSES = [
+  "5-Domain Job-Ready Program",
+  "Stem Cell & Regenerative Therapy Program",
+  "AI in Pharma Innovation Program",
   "Clinical Research",
   "Pharmacovigilance",
   "Medical Writing",
   "Clinical Data Management",
   "Clinical SAS",
-  "GPAT Coaching",
+
   "Internship Programs",
 ]
 const MODES = ["Online", "Classroom"]

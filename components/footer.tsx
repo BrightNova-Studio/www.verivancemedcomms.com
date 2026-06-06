@@ -130,12 +130,12 @@ export default function Footer() {
                   <Mail size={16} className="text-[#2ec4cc]" />
                 </div>
                 <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=verivance@gmail.com"
+                  href="mailto:info@verivancemedcomms.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#2ec4cc] transition-colors"
                 >
-                  verivance@gmail.com
+                  info@verivancemedcomms.com
                 </a>
               </li>
               <li className="flex items-center gap-3 hover:translate-x-1 transition-transform group cursor-pointer">
@@ -164,12 +164,12 @@ export default function Footer() {
               <p className="text-[#94a3b8] text-xs">
                 Developed by{" "}
                 <a
-                  href="https://brightnova.in"
+                  href="https://www.webzynix.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#2ec4cc] hover:underline transition-colors"
                 >
-                  brightnova.in
+                  WebZynix Technologies
                 </a>
               </p>
             </div>

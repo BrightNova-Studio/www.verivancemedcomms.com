@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Zap, Sparkles } from "lucide-react"
+import { ArrowRight, Zap, Sparkles, Clock, Award, Briefcase, Star, CalendarDays } from "lucide-react"
 import { useFreeDemo } from "./free-demo-context"
 
 const courseData = [
@@ -16,25 +16,18 @@ const courseData = [
     flagship: true,
   },
   {
-    id: 8,
-    title: "AI in Pharma Innovation Program",
-    image: "/advanced-data-management.jpg",
-    points: ["AI Applications in Drug Discovery & Clinical Trials", "Pharmacovigilance, Regulatory & Medical Writing AI", "1-Month Program · Online + Self-Paced · Certificate"],
-    path: "/courses/ai-in-pharma",
-  },
-  {
-    id: 7,
-    title: "Stem Cell & Regenerative Therapy Program",
-    image: "/clinical-research-laboratory.jpg",
-    points: ["Stem Cell Foundations & Advanced Techniques", "Hands-on Lab Training + Industry Internship", "3-Month Program · Certificate + Placement Support"],
-    path: "/courses/stem-cell-therapy",
-  },
-  {
     id: 1,
     title: "Advanced Clinical Research Certification",
-    image: "/clinical-research-laboratory.jpg",
+    image: "/course-clinical-research.jpg",
     points: ["ICH-GCP & Clinical Trial Protocols", "End-to-End Clinical Trial Operations", "Regulatory Compliance & Ethics"],
     path: "/courses/clinical-research",
+  },
+  {
+    id: 3,
+    title: "Medical Writing Certification",
+    image: "/medical-writing-documentation.jpg",
+    points: ["Regulatory Writing (Protocols, CSRs, IBs)", "Clinical Study Reports & Publications", "Medical & Scientific Communication"],
+    path: "/courses/medical-writing",
   },
   {
     id: 2,
@@ -44,11 +37,18 @@ const courseData = [
     path: "/courses/pharmacovigilance",
   },
   {
-    id: 3,
-    title: "Regulatory & Medical Writing Certification",
-    image: "/medical-writing-documentation.jpg",
-    points: ["Regulatory Writing (Protocols, CSRs, IBs)", "Clinical Study Reports & Publications", "Medical & Scientific Communication"],
-    path: "/courses/medical-writing",
+    id: 8,
+    title: "AI in Pharma Innovation Program",
+    image: "/course-ai-pharma.jpg",
+    points: ["AI Applications in Drug Discovery & Clinical Trials", "Pharmacovigilance, Regulatory & Medical Writing AI", "1-Month Program · Online + Self-Paced · Certificate"],
+    path: "/courses/ai-in-pharma",
+  },
+  {
+    id: 9,
+    title: "Global Regulatory Affairs Program",
+    image: "/course-regulatory-affairs.jpg",
+    points: ["US FDA + EU MDR + CDSCO (India) Frameworks", "Pharma Regulatory Affairs + Medical Devices RA", "3-Month Program · Online + Internship · Certificate"],
+    path: "/courses/regulatory-affairs",
   },
   {
     id: 4,
@@ -57,13 +57,26 @@ const courseData = [
     points: ["CRF Design & EDC Systems", "Data Validation & Quality Control", "Data Integrity & Compliance Standards"],
     path: "/courses/clinical-data-management",
   },
-
+  {
+    id: 7,
+    title: "Stem Cell & Regenerative Therapy Program",
+    image: "/course-stem-cell.jpg",
+    points: ["Stem Cell Foundations & Advanced Techniques", "Hands-on Lab Training + Industry Internship", "3-Month Program · Certificate + Placement Support"],
+    path: "/courses/stem-cell-therapy",
+  },
   {
     id: 6,
     title: "Clinical SAS Certification",
-    image: "/advanced-data-management.jpg",
+    image: "/course-clinical-sas.jpg",
     points: ["Base SAS & Advanced SAS Programming", "CDISC Standards (SDTM, ADaM, TLF)", "Real-Time Projects & Industry Training"],
     path: "/courses/clinical-sas",
+  },
+  {
+    id: 10,
+    title: "Professional Internship Programs",
+    image: "/course-internship.jpg",
+    points: ["Clinical Research · PV · Medical Writing · CDM", "Live Projects + Expert Mentorship", "Internship Certification + Placement Support"],
+    path: "/courses/internship-programs",
   },
 ]
 
@@ -81,7 +94,7 @@ export default function Courses() {
     const courseMap: Record<string, string> = {
       "Advanced Clinical Research Certification": "Clinical Research",
       "Pharmacovigilance & Drug Safety Certification": "Pharmacovigilance",
-      "Regulatory & Medical Writing Certification": "Medical Writing",
+      "Medical Writing Certification": "Medical Writing",
       "Clinical Data Management Certification": "Clinical Data Management",
       "Clinical SAS Certification": "Clinical SAS",
 
@@ -185,70 +198,173 @@ export default function Courses() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {courseData.map((course, index) => (
-            <div
-              key={course.id}
-              ref={(el) => { cardRefs.current[index] = el }}
-              data-index={index}
-              className={`group rounded-2xl overflow-hidden transition-all duration-700 ease-out transform hover:scale-105 hover:-translate-y-4 ${
-                (course as any).flagship
-                  ? "md:col-span-2 lg:col-span-3 border-2 border-yellow-400/40 shadow-xl shadow-yellow-400/10"
-                  : "border border-white/50 hover:border-[#2ec4cc]/50 shadow-md hover:shadow-xl"
-              } ${
-                visibleCards.has(index) ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-95"
-              }`}
-              style={{ transitionDelay: visibleCards.has(index) ? `${index * 80}ms` : "0ms", background: "#fff" }}
-              onMouseEnter={() => setHoveredId(course.id)}
-              onMouseLeave={() => setHoveredId(null)}
-            >
-              <div className="relative h-56 overflow-hidden bg-gradient-to-br from-[#0b3c5d] to-[#2ec4cc]">
-                <Image
-                  src={course.image || "/placeholder.svg"}
-                  alt={course.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-125 transition-transform duration-700"
-                  loading={index < 3 ? "eager" : "lazy"}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0b3c5d] via-[#0b3c5d]/40 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300"></div>
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full border-2 border-[#2ec4cc] flex items-center justify-center animate-float-up">
-                    <Zap size={28} className="text-[#2ec4cc]" />
+            (course as any).flagship ? (
+              /* ── FLAGSHIP CARD – premium horizontal layout ── */
+              <div
+                key={course.id}
+                ref={(el) => { cardRefs.current[index] = el }}
+                data-index={index}
+                className={`group md:col-span-2 lg:col-span-3 rounded-2xl overflow-hidden transition-all duration-700 ease-out shadow-2xl border border-[#2ec4cc]/30 ${
+                  visibleCards.has(index) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                }`}
+                style={{ transitionDelay: "0ms", background: "#fff" }}
+              >
+                <div className="flex flex-col lg:flex-row min-h-[420px]">
+
+                  {/* Image column */}
+                  <div className="relative lg:w-2/5 h-64 lg:h-auto overflow-hidden flex-shrink-0">
+                    <Image
+                      src={course.image || "/placeholder.svg"}
+                      alt={course.title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 40vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      loading="eager"
+                    />
+                    {/* Dark overlay for text legibility */}
+                    <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#0b3c5d]/80 via-[#0b3c5d]/30 to-transparent" />
+
+                    {/* Flagship badge */}
+                    <div className="absolute top-4 left-4 flex items-center gap-1.5 bg-[#0b3c5d] text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg">
+                      <Star size={12} fill="currentColor" className="text-yellow-400" />
+                      Flagship Program
+                    </div>
+
+                    {/* Certificate tag */}
+                    <div className="absolute bottom-4 left-4 flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 text-white text-xs font-medium px-3 py-1.5 rounded-full">
+                      <Award size={13} />
+                      Industry Certificate Included
+                    </div>
+                  </div>
+
+                  {/* Content column */}
+                  <div className="lg:w-3/5 p-8 lg:p-10 flex flex-col justify-between gap-5">
+
+                    {/* Top: rating + title */}
+                    <div>
+                      {/* Social proof */}
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="flex text-yellow-400">
+                          {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
+                        </div>
+                        <span className="text-sm text-[#64748b]">4.9 · 1,200+ students enrolled</span>
+                      </div>
+
+                      <h3 className="text-2xl sm:text-3xl font-bold text-[#0f172a] mb-2 leading-tight">
+                        {course.title}
+                      </h3>
+                      <p className="text-[#64748b] text-sm leading-relaxed">
+                        The most comprehensive clinical career launchpad — 5 disciplines, one industry certificate.
+                      </p>
+                    </div>
+
+                    {/* Highlight strip */}
+                    <div className="flex items-center gap-3 bg-[#e0f7fa] border border-[#2ec4cc]/30 rounded-xl px-4 py-3">
+                      <CalendarDays size={18} className="text-[#0b3c5d] flex-shrink-0" />
+                      <span className="text-sm font-medium text-[#0b3c5d]">3-month flagship program · Next cohort starts soon</span>
+                    </div>
+
+                    {/* Domain chips */}
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                      {["Clinical Research", "Pharmacovigilance", "Medical Writing", "Regulatory Affairs", "Clinical Data Mgmt"].map((domain) => (
+                        <div key={domain} className="flex items-center gap-2 text-sm text-[#334155]">
+                          <div className="w-2 h-2 rounded-full bg-[#2ec4cc] flex-shrink-0" />
+                          {domain}
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Meta row */}
+                    <div className="flex flex-wrap gap-4 text-xs text-[#64748b]">
+                      <span className="flex items-center gap-1.5"><Clock size={13} /> 3 months</span>
+                      <span className="flex items-center gap-1.5"><Award size={13} /> Industry certificate</span>
+                      <span className="flex items-center gap-1.5"><Briefcase size={13} /> Job-ready outcome</span>
+                    </div>
+
+                    {/* CTAs */}
+                    <div className="flex gap-3 pt-1">
+                      <button
+                        onClick={() => openModal(getCourseName(course.title))}
+                        className="flex-1 py-3 px-5 border border-[#0b3c5d] text-[#0b3c5d] rounded-xl hover:bg-[#0b3c5d] hover:text-white transition-all text-sm font-semibold"
+                      >
+                        Free Demo
+                      </button>
+                      <Link
+                        href={course.path}
+                        prefetch={true}
+                        className="flex-[2] py-3 px-5 bg-gradient-to-r from-[#0b3c5d] to-[#2ec4cc] text-white rounded-xl hover:shadow-lg hover:shadow-[#2ec4cc]/30 transition-all text-sm font-semibold flex items-center justify-center gap-2 group/btn"
+                      >
+                        Explore Program
+                        <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
+                      </Link>
+                    </div>
+
                   </div>
                 </div>
               </div>
+            ) : (
+              /* ── REGULAR COURSE CARD ── */
+              <div
+                key={course.id}
+                ref={(el) => { cardRefs.current[index] = el }}
+                data-index={index}
+                className={`group rounded-2xl overflow-hidden transition-all duration-700 ease-out transform hover:scale-105 hover:-translate-y-4 border border-white/50 hover:border-[#2ec4cc]/50 shadow-md hover:shadow-xl ${
+                  visibleCards.has(index) ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-95"
+                }`}
+                style={{ transitionDelay: visibleCards.has(index) ? `${index * 80}ms` : "0ms", background: "#fff" }}
+                onMouseEnter={() => setHoveredId(course.id)}
+                onMouseLeave={() => setHoveredId(null)}
+              >
+                <div className="relative h-56 overflow-hidden bg-gradient-to-br from-[#0b3c5d] to-[#2ec4cc]">
+                  <Image
+                    src={course.image || "/placeholder.svg"}
+                    alt={course.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-125 transition-transform duration-700"
+                    loading={index < 3 ? "eager" : "lazy"}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b3c5d] via-[#0b3c5d]/40 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-full border-2 border-[#2ec4cc] flex items-center justify-center animate-float-up">
+                      <Zap size={28} className="text-[#2ec4cc]" />
+                    </div>
+                  </div>
+                </div>
 
-              <div className="p-6 sm:p-8">
-                <h3 className="text-xl font-bold text-[#0f172a] mb-4 group-hover:text-[#0b3c5d] transition-colors">
-                  {course.title}
-                </h3>
+                <div className="p-6 sm:p-8">
+                  <h3 className="text-xl font-bold text-[#0f172a] mb-4 group-hover:text-[#0b3c5d] transition-colors">
+                    {course.title}
+                  </h3>
 
-                <ul className="space-y-2.5 mb-8">
-                  {course.points.map((point, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-[#64748b] text-sm">
-                      <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#2ec4cc] to-[#0b3c5d] mt-1.5 flex-shrink-0"></div>
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
+                  <ul className="space-y-2.5 mb-8">
+                    {course.points.map((point, idx) => (
+                      <li key={idx} className="flex items-start gap-3 text-[#64748b] text-sm">
+                        <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#2ec4cc] to-[#0b3c5d] mt-1.5 flex-shrink-0"></div>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                <div className="flex gap-3">
-                  <button 
-                    onClick={() => openModal(getCourseName(course.title))}
-                    className="flex-1 py-2.5 px-4 bg-[#f1f5f9] text-[#0b3c5d] rounded-lg hover:bg-gradient-to-r hover:from-[#2ec4cc] hover:to-[#0b3c5d] hover:text-white transition-all text-sm font-semibold shadow-sm hover:shadow-premium"
-                  >
-                    Free Demo
-                  </button>
-                  <Link
-                    href={course.path}
-                    prefetch={true}
-                    className="flex-1 py-2.5 px-4 bg-gradient-to-r from-[#0b3c5d] to-[#2ec4cc] text-white rounded-lg hover:shadow-premium transition-all text-sm font-semibold flex items-center justify-center gap-2 group/btn"
-                  >
-                    Explore
-                    <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
-                  </Link>
+                  <div className="flex gap-3">
+                    <button
+                      onClick={() => openModal(getCourseName(course.title))}
+                      className="flex-1 py-2.5 px-4 bg-[#f1f5f9] text-[#0b3c5d] rounded-lg hover:bg-gradient-to-r hover:from-[#2ec4cc] hover:to-[#0b3c5d] hover:text-white transition-all text-sm font-semibold shadow-sm hover:shadow-premium"
+                    >
+                      Free Demo
+                    </button>
+                    <Link
+                      href={course.path}
+                      prefetch={true}
+                      className="flex-1 py-2.5 px-4 bg-gradient-to-r from-[#0b3c5d] to-[#2ec4cc] text-white rounded-lg hover:shadow-premium transition-all text-sm font-semibold flex items-center justify-center gap-2 group/btn"
+                    >
+                      Explore
+                      <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
+            )
           ))}
         </div>
       </div>

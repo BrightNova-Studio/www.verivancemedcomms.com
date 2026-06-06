@@ -11,12 +11,13 @@ import { BookOpen } from "lucide-react"
 
 const courses = [
   { name: "⭐ 5-Domain Job-Ready Program", path: "/courses/5-domain-program" },
-  { name: "Stem Cell & Regenerative Therapy", path: "/courses/stem-cell-therapy" },
-  { name: "AI in Pharma Innovation Program", path: "/courses/ai-in-pharma" },
   { name: "Clinical Research", path: "/courses/clinical-research" },
-  { name: "Pharmacovigilance", path: "/courses/pharmacovigilance" },
   { name: "Medical Writing", path: "/courses/medical-writing" },
+  { name: "Pharmacovigilance", path: "/courses/pharmacovigilance" },
+  { name: "AI in Pharma Innovation Program", path: "/courses/ai-in-pharma" },
+  { name: "Global Regulatory Affairs", path: "/courses/regulatory-affairs" },
   { name: "Clinical Data Management", path: "/courses/clinical-data-management" },
+  { name: "Stem Cell & Regenerative Therapy", path: "/courses/stem-cell-therapy" },
   { name: "Clinical SAS", path: "/courses/clinical-sas" },
   { name: "Internship Programs", path: "/courses/internship-programs" },
 ]

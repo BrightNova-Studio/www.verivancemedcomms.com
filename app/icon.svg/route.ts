@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server"
 
+// Required for `output: "export"` — force this route handler to be statically generated.
+export const dynamic = "force-static"
+
 export async function GET() {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" fill="none">
   <defs>

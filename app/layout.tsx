@@ -95,9 +95,12 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: [{ url: "/icon-light-32x32.png", type: "image/png", sizes: "32x32" }],
-    apple: "/apple-icon.png",
-    shortcut: "/icon-light-32x32.png",
+    icon: [
+      { url: "/favicon.ico?v=2", sizes: "any" },
+      { url: "/icon-light-32x32.png?v=2", type: "image/png", sizes: "32x32" },
+    ],
+    apple: "/apple-icon.png?v=2",
+    shortcut: "/favicon.ico?v=2",
   },
 
   verification: {

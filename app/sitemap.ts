@@ -1,5 +1,8 @@
 import type { MetadataRoute } from "next"
 
+// Required for `output: "export"` — force the route to be statically generated.
+export const dynamic = "force-static"
+
 const BASE = "https://verivancemedcomms.com"
 
 export default function sitemap(): MetadataRoute.Sitemap {

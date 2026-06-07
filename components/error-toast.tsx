@@ -15,8 +15,8 @@ export default function ErrorToast() {
       const timer = setTimeout(() => setShow(false), 4000)
       return () => clearTimeout(timer)
     }
-    window.addEventListener("showErrorToast", handler as EventListener)
-    return () => window.removeEventListener("showErrorToast", handler as EventListener)
+    window.addEventListener("showErrorToast", handler as unknown as EventListener)
+    return () => window.removeEventListener("showErrorToast", handler as unknown as EventListener)
   }, [])
 
   return (

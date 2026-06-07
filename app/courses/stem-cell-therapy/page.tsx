@@ -1,5 +1,25 @@
 "use client"
 
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Stem Cell & Regenerative Therapy Program | Verivance Academy",
+  description: "2-month hands-on program in stem cell biology, advanced lab techniques, and industry internship. Certificate and placement support from Verivance Academy, Hyderabad.",
+  alternates: { canonical: "https://verivancemedcomms.com/courses/stem-cell-therapy" },
+  openGraph: {
+    title: "Stem Cell & Regenerative Therapy Program | Verivance Academy",
+    description: "2-month hands-on program in stem cell biology, advanced lab techniques, and industry internship. Certificate and placement support from Verivance Academy, Hyderabad.",
+    url: "https://verivancemedcomms.com/courses/stem-cell-therapy",
+    images: [{ url: "/course-stem-cell.png", width: 1200, height: 630, alt: "Stem Cell & Regenerative Therapy Program | Verivance Academy" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Stem Cell & Regenerative Therapy Program | Verivance Academy",
+    description: "2-month hands-on program in stem cell biology, advanced lab techniques, and industry internship. Certificate and placement support from Verivance Academy, Hyderabad.",
+    images: ["/course-stem-cell.png"],
+  },
+}
+
 import { useState, useEffect } from "react"
 import CourseLayout from "@/components/course-layout"
 import { useFreeDemo } from "@/components/free-demo-context"
@@ -198,7 +218,7 @@ export default function StemCellTherapyPage() {
 
             <p className={`${getDescSize()} text-[#e2e8f0] ${sp.desc} leading-relaxed max-w-2xl`}>
               Gain practical expertise in stem cell technologies and regenerative medicine. From lab fundamentals
-              to industry internship — this comprehensive 3-month program prepares you for high-demand roles
+              to industry internship — this comprehensive 2-month program prepares you for high-demand roles
               in life sciences, biotech, and clinical research.
             </p>
 
@@ -220,7 +240,7 @@ export default function StemCellTherapyPage() {
             {/* Quick stats */}
             <div className="flex flex-wrap gap-3">
               {[
-                { icon: Clock,         label: "3 Months Duration" },
+                { icon: Clock,         label: "2 Months Duration" },
                 { icon: Monitor,       label: "Online + Hands-on" },
                 { icon: Briefcase,     label: "Internship Included" },
                 { icon: Award,         label: "Industry Certificate" },
@@ -334,7 +354,7 @@ export default function StemCellTherapyPage() {
                 </div>
                 <div className="bg-white divide-y divide-[#e2e8f0]">
                   {[
-                    { label: "Duration", value: "3 Months", icon: Clock },
+                    { label: "Duration", value: "2 Months", icon: Clock },
                     { label: "Mode",     value: "Online + Hands-on + Internship", icon: Monitor },
                   ].map(({ label, value, icon: Icon }) => (
                     <div key={label} className="flex items-start gap-3 px-6 py-4">

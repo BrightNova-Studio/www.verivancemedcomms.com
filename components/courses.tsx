@@ -60,8 +60,8 @@ const courseData = [
   {
     id: 7,
     title: "Stem Cell & Regenerative Therapy Program",
-    image: "/course-stem-cell.jpg",
-    points: ["Stem Cell Foundations & Advanced Techniques", "Hands-on Lab Training + Industry Internship", "3-Month Program · Certificate + Placement Support"],
+    image: "/course-stem-cell.png",
+    points: ["Stem Cell Foundations & Advanced Techniques", "Hands-on Lab Training + Industry Internship", "2-Month Program · Certificate + Placement Support"],
     path: "/courses/stem-cell-therapy",
   },
   {
